@@ -75,8 +75,12 @@ goal = form.getfirst('goal', 'empty')
 
 out,_=solve(numbs,goal)
 
-print json.dumps(out)
-
+print """\
+Content-Type: text/html\n
+<html><body>
+<p>"%s"</p>
+</body></html>
+""" % out
 
 
 
