@@ -1,17 +1,20 @@
 #!/usr/bin/python
 print "Content-Type: text/plain"
 print
-
-
-
+print """\
+<html>
+<body>
+<h2>Hello World!</h2>
+</body>
+</html>
+"""
 import cgi
-import cgitb
+import cgitb;cgitb.enable()
 import os
 import Cookie
 import json
-import string, operator
+import string
 from itertools import permutations
-ops = {'+': operator.add, '-': operator.sub, '*': operator.mul, '/': operator.div}
 
 def RPN(n):
   if n == 1:
@@ -57,23 +60,13 @@ def solve(arr,k):
 			
 
 
-
-
-
-
-cgitb.enable()
-
-
-
-
-
 form=cgi.FieldStorage()
 
-numbs = form.getfirst('numbs', 'empty')
-numbs.split(",")
+nums = form.getfirst('nums', 'empty')
+nums.split(",")
 goal = form.getfirst('goal', 'empty')
 
-out,_=solve(numbs,goal)
+out,_=solve(nums,goal)
 
 print """\
 Content-Type: text/html\n
